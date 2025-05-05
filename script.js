@@ -587,12 +587,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         showEndings();
                     } else if (currentBranch === 'monkeyBoss' && currentDialogueIndex === 25) {
                         showEndings();
-                    } else if (currentBranch === "evil_scythe" && currentDialogueIndex === 1) {
-                        image.src = "assets/icons/evilChar.png";
-                        document.getElementById('backgroundCity').src = "assets/bg/evilSchool.png"; // Fix background change
-                    } else if (currentBranch === "evil_magic" && currentDialogueIndex === 1) {
-                        image.src = "assets/icons/evilChar.png";
-                        document.getElementById('backgroundCity').src = "assets/bg/evilSchool.png"; // Fix background change
                     } else if (currentBranch === "evil_trainingTwo" && currentDialogueIndex === 5) {
                         image.src = "assets/char/satAnn.png";
                     } else if (currentBranch === "evil_travelFlight" && currentDialogueIndex === 0) {
@@ -645,6 +639,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         document.getElementById('backgroundCity').src = "assets/bg/sewers.png";
                     } else if (currentBranch === "evil_hidingSewersRun" && currentDialogueIndex === 2) {
                         document.getElementById('backgroundCity').src = "assets/bg/evilSchool.png";
+                    } else if (currentBranch === "evil_scythe" && currentDialogueIndex === 1) {
+                        image.src = "assets/icons/evilChar.png";
+                        document.getElementById('backgroundCity').src = "assets/bg/evilSchool.png"; // Fix background change
+                    } else if (currentBranch === "evil_magic" && currentDialogueIndex === 1) {
+                        image.src = "assets/icons/evilChar.png";
+                        document.getElementById('backgroundCity').src = "assets/bg/evilSchool.png"; // Fix background change
                     }
                 });
             }
