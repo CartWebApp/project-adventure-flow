@@ -144,11 +144,18 @@ document.addEventListener('DOMContentLoaded', () => {
             "You will have my pupil accompany you to the treasure",
             "Its time to go off and find the tresure!",
             "Now you have to pick how to get there...",
+            () => evil_showTravelChoices() // Add call to evil_showTravelChoices
         ],
         evil_hidingCorpse: [
             "You decide to hide under all the people you have defeated",
             "You wait there all day and night",
-
+            "Once you notice that the coast is clear, you run back to the base",
+            "You find your mentor, and he introduces you to his other student",
+            "Sat Ann",
+            "You will have my pupil accompany you to the tresure",
+            "Its time to go off and find the tresure!",
+            "Now you have to pick how to get there...",
+            () => evil_showTravelChoices() // Add call to evil_showTravelChoices
         ],
         evil_travelFlight: [
             "you see this sea monster, the Kraken...",
@@ -501,6 +508,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "Was it worth it?"
         ]
     };
+
 
     let currentDialogueIndex = 0;
     let currentBranch = null;
@@ -877,6 +885,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
         optionBtns.appendChild(runSewersBtn);
         optionBtns.appendChild(drinkBtn);
+    }
+
+    function evil_showTravelChoices() {
+        nextBtn.style.display = 'none';
+        optionBtns.style.display = 'block';
+        optionBtns.innerHTML = ''; // Clear previous options
+
+        const evilLandBtn = document.createElement('button');
+        evilLandBtn.textContent = 'Travel by Land'; // Improved text clarity
+        evilLandBtn.addEventListener('click', () => {
+            typeText('You chose to travel by land!', () => {
+                currentBranch = 'evil_landTravel';
+                currentDialogueIndex = 0;
+                optionBtns.style.display = 'none';
+                nextBtn.style.display = 'block';
+            });
+        });
+
+        const evilSkyBtn = document.createElement('button');
+        evilSkyBtn.textContent = 'Travel by Sky'; // Improved text clarity
+        evilSkyBtn.addEventListener('click', () => {
+            typeText('You chose to travel by sky!', () => {
+                currentBranch = 'evil_travelFlight';
+                currentDialogueIndex = 0;
+                optionBtns.style.display = 'none';
+                nextBtn.style.display = 'block';
+            });
+        });
+
+        optionBtns.appendChild(evilLandBtn);
+        optionBtns.appendChild(evilSkyBtn);
     }
 
     function showTravelChoices() {

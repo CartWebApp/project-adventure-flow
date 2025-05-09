@@ -285,9 +285,13 @@ p{
     margin-left: 10px;
 }
 
-#back-btn{
-    display: flex;
-    position: absolute;
+.extraBtns{
+    display:flex;
+    flex-direction: column;
+    width: 5%;
+}
+
+#back-btn, #restart-btn {
     background-color: lime;
     color: black;
     border: 2px solid lime;
@@ -296,7 +300,7 @@ p{
     cursor: pointer;
 }
 
-#back-btn:hover{
+#back-btn:hover, #restart-btn:hover {
     background-color: black;
     color: lime;
     border: 2px solid lime;
@@ -316,7 +320,7 @@ p{
 #showPuzzleBtn {
     display: block;
     margin-left: 90%;
-    margin-top: 45%;
+    margin-top: 46.5%;
     position: absolute;
 }
 
