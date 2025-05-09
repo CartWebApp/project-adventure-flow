@@ -586,26 +586,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 nextBtn.style.display = 'none';
                 optionBtns.style.display = 'block'; // Show options for the next step
 
-                // Show runaway choices after completing evil training branches
+                // Show appropriate choices based on the current branch
                 if (['evil_trainingOne', 'evil_trainingTwo', 'evil_trainingThree'].includes(currentBranch)) {
                     showRunawayChoices();
                 } else if (currentBranch === 'evil_hidingSewers') {
-                    showSewerChoices(); // Show sewer choices at the end of evil_hidingSewers
-                } else if ((currentBranch === 'evil_travelFlightMagic' || currentBranch === 'evil_travelFlightScythe') &&
-                           currentDialogueIndex === branchDialogues[currentBranch].length - 1) {
+                    showSewerChoices();
+                } else if (currentBranch === 'evil_hidingCorpse') {
+                    evil_showTravelChoices();
+                } else if (currentBranch === 'evil_travelFlight') {
+                    showBattleKrakenChoices();
+                } else if (currentBranch === 'evil_travelFlightMagic' || currentBranch === 'evil_travelFlightScythe') {
                     showSatAnnChoices();
+                } else if (currentBranch === 'evil_followMentor') {
+                    showTreasureChoices();
+                } else if (currentBranch === 'evil_puzzleSolved') {
+                    showMentorChoices();
                 }
             } else {
                 typeText(branchDialogues[currentBranch][currentDialogueIndex], () => {
+                    // Trigger specific events based on dialogue index
                     if (currentBranch === 'mage' && currentDialogueIndex === 2) {
                         showWeaponChoices();
-                        image.src = "/assets/char/moistWizard.png"; // Set the image to one specific image
                     } else if (currentBranch === 'swordsman' && currentDialogueIndex === 2) {
                         showSwordsmanWeaponChoices();
-                        image.src = "/assets/char/moistSword.png"; // Set the image to one specific image
                     } else if (currentBranch === 'evil' && currentDialogueIndex === branchDialogues.evil.length - 1) {
                         showEvilWeaponChoices();
-                        image.src = "/assets/char/moistEvil.png"; // Set the image to one specific image
+                    } else if (currentBranch === 'evil_hidingSewersRun' && currentDialogueIndex === branchDialogues.evil_hidingSewersRun.length - 1) {
+                        evil_showTravelChoices();
                     }
                 });
             }
@@ -778,7 +785,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function showEvilTrainingChoices() {
         nextBtn.style.display = 'none';
         optionBtns.style.display = 'block';
-        optionBtns.innerHTML = '';
+        optionBtns.innerHTML = ''; // Clear previous options
 
         const evilTrainOne = document.createElement('button');
         evilTrainOne.textContent = 'Defeat criminals for practice';
@@ -789,6 +796,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentDialogueIndex = 0;
                 optionBtns.style.display = 'none';
                 nextBtn.style.display = 'block';
+                typeText(branchDialogues.evil_trainingOne[currentDialogueIndex]); // Start the selected branch
             });
         });
 
@@ -801,6 +809,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentDialogueIndex = 0;
                 optionBtns.style.display = 'none';
                 nextBtn.style.display = 'block';
+                typeText(branchDialogues.evil_trainingTwo[currentDialogueIndex]); // Start the selected branch
             });
         });
 
@@ -813,6 +822,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentDialogueIndex = 0;
                 optionBtns.style.display = 'none';
                 nextBtn.style.display = 'block';
+                typeText(branchDialogues.evil_trainingThree[currentDialogueIndex]); // Start the selected branch
             });
         });
 
