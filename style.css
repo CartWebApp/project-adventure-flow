@@ -272,6 +272,10 @@ button:hover{
     flex-wrap: wrap;
 }
 
+li {
+    margin-top: 10px;
+}
+
 #pieces img {
     width: 79px;
     height: 79px;
